@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui" {
+  themes: light-teal --default, dark-teal --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light-teal";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-primary: oklch(50.3% 0.081 180.0);
+  --color-primary-content: oklch(98% 0.001 106.423);
+  --color-secondary: oklch(50.3% 0.081 180.0);
+  --color-secondary-content: oklch(98% 0.001 106.423);
+  --color-base-100: oklch(98% 0.001 106.423);
+  --color-base-200: oklch(50.3% 0.081 180.0 / 0.1);
+  --color-base-300: oklch(50.3% 0.081 180.0 / 0.2);
+  --color-base-content: oklch(21% 0.006 56.043);
+  --color-accent: oklch(86% 0.127 207.078);
+  --color-accent-content: oklch(30% 0.056 229.695);
+  --color-neutral: oklch(44% 0.011 73.639);
+  --color-neutral-content: oklch(98% 0.001 106.423);
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: oklch(98% 0.019 200.873);
+  --color-success: oklch(60% 0.118 184.704);
+  --color-success-content: oklch(98% 0.014 180.72);
+  --color-warning: oklch(64% 0.222 41.116);
+  --color-warning-content: oklch(98% 0.016 73.684);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(97% 0.013 17.38);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark-teal";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-primary: oklch(50.3% 0.081 180.0);
+  --color-primary-content: oklch(98% 0.001 106.423);
+  --color-secondary: oklch(50.3% 0.081 180.0);
+  --color-secondary-content: oklch(98% 0.001 106.423);
+  --color-base-100: oklch(15% 0.001 106.423);
+  --color-base-200: oklch(50.3% 0.081 180.0 / 0.1);
+  --color-base-300: oklch(50.3% 0.081 180.0 / 0.2);
+  --color-base-content: oklch(90% 0.001 106.423);
+  --color-accent: oklch(70% 0.127 207.078);
+  --color-accent-content: oklch(20% 0.056 229.695);
+  --color-neutral: oklch(35% 0.011 73.639);
+  --color-neutral-content: oklch(90% 0.001 106.423);
+  --color-info: oklch(50% 0.126 221.723);
+  --color-info-content: oklch(90% 0.019 200.873);
+  --color-success: oklch(50% 0.118 184.704);
+  --color-success-content: oklch(90% 0.014 180.72);
+  --color-warning: oklch(55% 0.222 41.116);
+  --color-warning-content: oklch(90% 0.016 73.684);
+  --color-error: oklch(45% 0.245 27.325);
+  --color-error-content: oklch(90% 0.013 17.38);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
+}
+
+body {
+    font-family: "Host Grotesk", sans-serif;
+    overflow-x: hidden;
+}
+
+a.active{
+    @apply border-b-2 border-primary bg-base-300 text-teal-200
+}
+
+
