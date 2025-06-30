@@ -21,7 +21,7 @@ const Skills = () => {
         <SectionHeader>My Skills</SectionHeader>
         <div className="container mx-auto">
           <motion.p
-            className="text-center"
+            className="lg:text-center text-justify px-4"
             variants={container("BTT")}
             initial="initial"
             whileInView="animate"

@@ -48,7 +48,7 @@ const ContactForm = () => {
           onChange={(e) => setName(e.target.value)}
           id="name"
           placeholder="Your name"
-          className="input w-full border-2 border-primary"
+          className="input w-full border-2 border-primary z-0"
         />
       </div>
 
@@ -60,7 +60,7 @@ const ContactForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           id="email"
           placeholder="john@doe.com"
-          className="input w-full border-2 border-primary"
+          className="input w-full border-2 border-primary z-0"
         />
       </div>
 
@@ -80,7 +80,7 @@ const ContactForm = () => {
           variants={socialIcons()}
           initial="initial"
           whileTap="onClick"
-          className="btn bg-primary hover:rounded-full text-white"
+          className="btn bg-primary hover:rounded-full text-white z-0"
           type="submit"
         >
           Send

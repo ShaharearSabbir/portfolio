@@ -96,7 +96,7 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <img src={hero} className="rounded w-98" alt="" />
+          <img src={hero} className="rounded-2xl w-98" alt="" />
         </motion.div>
       </div>
     </Section>

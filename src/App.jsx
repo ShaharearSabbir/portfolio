@@ -17,7 +17,6 @@ function App() {
   const fallback = { initial: {}, animate: {} };
 
   const options = {
-    // your options here, for example:
     duration: 500,
     smooth: true,
   };
@@ -31,7 +30,7 @@ function App() {
   }, []);
   return (
     <>
-      <div class="fixed overflow-hidden top-0 z-[-2] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+      <div className="fixed overflow-hidden top-0 z-[-2] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
