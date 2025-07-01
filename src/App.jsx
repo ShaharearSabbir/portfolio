@@ -14,7 +14,6 @@ import { animateScroll } from "react-scroll";
 
 function App() {
   const isMobile = useIsMobile();
-  const fallback = { initial: {}, animate: {} };
 
   const options = {
     duration: 500,
@@ -40,20 +39,11 @@ function App() {
       </motion.div>
       <Hero />
       <About />
-      <motion.div
-        variants={isMobile ? fallback : container("BTT")}
-        initial="initial"
-        whileInView="animate"
-      >
-        <Skills />
-      </motion.div>
-      <motion.div
-        variants={isMobile ? fallback : container("BTT")}
-        initial="initial"
-        whileInView="animate"
-      >
-        <Projects />
-      </motion.div>
+
+      <Skills />
+
+      <Projects />
+
       <Contact />
 
       <motion.div

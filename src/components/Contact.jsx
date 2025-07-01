@@ -13,59 +13,24 @@ import useIsMobile from "../Hooks/useIsMobile";
 const Contact = () => {
   const isMobile = useIsMobile();
 
-  // Fallback animation if disabled (no animation)
-  const fallback = { initial: {}, animate: {} };
   return (
     <Element name="contact">
       <Section>
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 md:px-8 mx-auto">
           <SectionHeader>Contact Me</SectionHeader>
-          <div className="flex flex-col lg:flex-row justify-between lg:items-center ">
+          <div className="flex flex-col lg:flex-row justify-between overflow-x-hidden lg:items-center ">
             <motion.div
-              variants={isMobile ? fallback : container("LTR")}
+              variants={isMobile ? container("BTT") : container("LTR")}
               initial="initial"
               whileInView="animate"
               className="flex-1 flex justify-center items-center"
             >
-              {/* <form className="space-y-4">
-                <div>
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="input w-full border-2 border-primary"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="input w-full border-2 border-primary"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="5"
-                    className="textarea w-full border-2 border-primary"
-                  />
-                </div>
-                <input
-                  type="submit"
-                  value="Message Me!!"
-                  className="btn bg-primary hover:rounded-full text-white"
-                />
-              </form> */}
-              <div className="lg:w-2/3">
+              <div className="w-full lg:w-2/3">
                 <ContactForm />
               </div>
             </motion.div>
             <motion.div
-              variants={isMobile ? fallback : container("RTL")}
+              variants={isMobile ? container("BTT") : container("RTL")}
               initial="initial"
               whileInView="animate"
               className="py-8 flex-1 lg:text-right space-y-4"
@@ -85,7 +50,7 @@ const Contact = () => {
 
               <div>
                 <h5 className="font-bold">Social</h5>
-                <div className="flex justify-start lg:justify-end items-center gap-2">
+                <div className="flex justify-start mt-1 lg:justify-end items-center gap-2">
                   <motion.a
                     variants={socialIcons()}
                     initial="initial"

@@ -1,6 +1,6 @@
 import React from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import hero from "../assets/hero.jpg";
+import hero from "../assets/hero.avif";
 import Section from "./Section";
 import Button from "./Button";
 import { PiXLogoBold } from "react-icons/pi";
@@ -12,9 +12,6 @@ import useIsMobile from "../Hooks/useIsMobile";
 const Hero = () => {
   const isMobile = useIsMobile();
 
-  // Fallback animation if disabled (no animation)
-  const fallback = { initial: {}, animate: {} };
-
   const name = "Shaharear Rahman Sabbir";
   const nameArray = name.split("");
   console.log(nameArray);
@@ -23,9 +20,9 @@ const Hero = () => {
   };
   return (
     <Section>
-      <div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row -mt-4 justify-between items-center gap-4 lg:mt-30">
+      <div className="container mx-auto px-4 md:px-8 flex flex-col-reverse lg:flex-row overflow-x-hidden -mt-4 md:mt-8 justify-between items-center gap-4 lg:mt-30">
         <motion.div
-          variants={isMobile ? fallback : container("LTR")}
+          variants={isMobile ? container("BTT") : container("LTR")}
           initial="initial"
           animate="animate"
           className="space-y-5 text-center lg:text-left"
@@ -92,7 +89,7 @@ const Hero = () => {
           <Button>Resume</Button>
         </motion.div>
         <motion.div
-          variants={isMobile ? fallback : container("RTL")}
+          variants={isMobile ? container("BTT") : container("RTL")}
           initial="initial"
           animate="animate"
         >

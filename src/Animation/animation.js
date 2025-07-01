@@ -7,10 +7,11 @@ export const heroWords = (duration, delay) => ({
   },
 });
 
-export const container = (direction, transDelay = 0, duration = 0.3) => ({
+export const container = (direction, transDelay = 0.5, duration = 0.3) => ({
   initial: {
-    x: direction === "LTR" ? "-30%" : direction === "RTL" ? "30%" : 0,
-    y: direction === "TTB" ? "-30%" : direction === "BTT" ? "30%" : 0,
+    x: direction === "LTR" ? -100 : direction === "RTL" ? 100 : 0,
+    y: direction === "TTB" ? -100 : direction === "BTT" ? 100 : 0,
+
     opacity: 0,
   },
   animate: {

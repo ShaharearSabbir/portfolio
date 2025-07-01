@@ -19,7 +19,7 @@ const Skills = () => {
     <Element name="skills">
       <Section>
         <SectionHeader>My Skills</SectionHeader>
-        <div className="container mx-auto">
+        <div className="container mx-auto p-4 md:p-8">
           <motion.p
             className="lg:text-center text-justify px-4"
             variants={container("BTT")}
@@ -29,7 +29,11 @@ const Skills = () => {
             Over the years, I have worked with a variety of technologies. Here
             are some of the technologies I have experience with:
           </motion.p>
-          <div>
+          <motion.div
+            variants={container("BTT")}
+            initial="initial"
+            whileInView="animate"
+          >
             <Marquee pauseOnHover={true} className="overflow-hidden p-4">
               <motion.a
                 variants={socialIcons()}
@@ -225,7 +229,7 @@ const Skills = () => {
                 </div>
               </motion.a>
             </Marquee>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </Element>

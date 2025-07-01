@@ -13,26 +13,24 @@ const About = () => {
 
   console.log(isMobile);
 
-  // Fallback animation if disabled (no animation)
-  const fallback = { initial: {}, animate: {} };
   const [readMore, setReadMore] = useState(false);
   return (
     <Element name="about">
       <Section>
         <div className="bg-base-200 py-12">
-          <div className="container px-4 mx-auto">
+          <div className="container px-4 md:px-8 mx-auto">
             <SectionHeader>About Me</SectionHeader>
-            <div className="flex flex-col lg:flex-row gap-4 justify-between items-center">
+            <div className="flex flex-col lg:flex-row gap-4 overflow-x-hidden justify-between items-center">
               <motion.div
-                variants={isMobile ? fallback : container("LTR")}
+                variants={isMobile ? container("BTT") : container("LTR")}
                 initial="initial"
                 whileInView="animate"
-                className="flex-1"
+                className="flex-1 overflow-y-hidden"
               >
                 <Lottie animationData={about} className="lg:w-3/4" />
               </motion.div>
               <motion.div
-                variants={isMobile ? fallback : container("RTL")}
+                variants={isMobile ? container("BTT") : container("RTL")}
                 initial="initial"
                 whileInView="animate"
                 className="text-justify flex-1"

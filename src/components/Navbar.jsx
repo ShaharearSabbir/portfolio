@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import logo from "../assets/logo-black.svg";
+import { useState } from "react";
 import Button from "./Button";
 import { animateScroll, Element, Link } from "react-scroll";
-import ThemeToggle from "./ThemeToggle";
-import { FcAbout } from "react-icons/fc";
 import { CgProfile } from "react-icons/cg";
 import { GiSkills } from "react-icons/gi";
 import { MdContactMail } from "react-icons/md";
