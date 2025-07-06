@@ -86,7 +86,14 @@ const Hero = () => {
               <FaWhatsapp color="#075e54" />
             </motion.a>
           </div>
-          <Button>Resume</Button>
+                      <a
+              href="/Resume - Shaharear Rahman Sabbir.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="view-button btn btn-primary"
+            >
+              View Resume
+            </a>
         </motion.div>
         <motion.div
           variants={isMobile ? container("BTT") : container("RTL")}

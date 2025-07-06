@@ -123,7 +123,14 @@ const Navbar = () => {
               />
               {isDark ? <LuSunDim size={25} /> : <FaRegMoon size={25} />}
             </label>
-            <Button>Resume</Button>
+            <a
+              href="/Resume - Shaharear Rahman Sabbir.pdf"
+              download="Resume - Shaharear Rahman Sabbir.pdf"
+              rel="noopener noreferrer"
+              className="view-button btn btn-primary"
+            >
+              Download Resume
+            </a>
           </div>
         </nav>
       </div>
