@@ -1,5 +1,6 @@
 "use server";
 
+import { Verification } from "@/generated/client/client";
 import { prisma } from "@/lib/prisma";
 import sendEmail from "@/utils/sendEmail";
 import jwt from "jsonwebtoken";
@@ -52,11 +53,27 @@ export async function sendAdminOTP() {
 
 export async function verifyAdminOTP(userOtp: number) {
   try {
-    const record = await prisma.verification.findFirst({
-      where: { otp: userOtp },
+    const record = await prisma.$transaction(async (tx) => {
+      const record: Verification | null = await tx.verification.findFirst({
+        where: { otp: userOtp },
+      });
+
+      await tx.verification.updateMany({
+        data: {
+          attempts: {
+            increment: 1,
+          },
+        },
+      });
+      return record;
     });
 
     if (!record) return { success: false, message: "Invalid code" };
+
+    if (record.attempts > 5) {
+      await prisma.verification.delete({ where: { id: record.id } });
+      return { success: false, message: "Too many attempts, resend OTP" };
+    }
 
     const isExpired = Date.now() - record.createdAt.getTime() > 5 * 60 * 1000;
     if (isExpired) {
@@ -173,14 +190,14 @@ export async function refreshSession() {
       httpOnly: true,
       secure: isProd,
       sameSite: "strict",
-      maxAge: 3600,
+      maxAge: 1 * 60 * 60 * 1000,
     });
 
     cookieStore.set("refreshToken", newRefreshToken, {
       httpOnly: true,
       secure: isProd,
       sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return { success: true };
@@ -189,7 +206,6 @@ export async function refreshSession() {
     return { success: false, message: "Seamless login failed" };
   }
 }
-
 
 export async function terminateSession() {
   const cookieStore = await cookies();
@@ -210,7 +226,6 @@ export async function terminateSession() {
     // .delete() tells the browser to remove the cookie entries entirely
     cookieStore.delete("accessToken");
     cookieStore.delete("refreshToken");
-
 
     redirect("/login");
   }

@@ -18,9 +18,14 @@ import { ProjectDetail } from "./ProjectDetail";
 export function ProjectArchive({ projects }: { projects: Project[] }) {
   return (
     <Dialog>
-      <DialogTrigger className="group gap-2 text-primary p-0 h-auto font-bold text-lg">
+      <DialogTrigger asChild>
+        <Button
+          variant="link"
+          className="group gap-2 text-primary p-0 h-auto font-bold text-lg"
+        >
           View Full Archive{" "}
-          <VscArrowRight className="group-hover:translate-x-1 transition-transform" />
+          <VscArrowRight className="group-hover:translate-x-1 transition-transform" />{" "}
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="min-w-[90vw] h-[90vh] overflow-y-auto p-0 border-none bg-background sm:rounded-3xl">

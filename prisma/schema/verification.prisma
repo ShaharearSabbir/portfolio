@@ -1,6 +1,7 @@
 model Verification {
     id        String   @id @default(uuid())
     otp       Int
+    attempts  Int      @default(0)
     createdAt DateTime @default(now())
 
     @@map("verifications")

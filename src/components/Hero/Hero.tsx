@@ -110,7 +110,7 @@ const Hero = () => {
               </Button>
             </a>
             <m.div whileHover="hover" className="inline-block">
-              <ScrollLink name="projects">
+              <ScrollLink name="featured-projects">
                 <Button
                   size="lg"
                   variant="outline"

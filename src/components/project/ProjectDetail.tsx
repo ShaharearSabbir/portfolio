@@ -24,16 +24,18 @@ import { Project } from "@/generated/client/browser";
 export function ProjectDetail({
   project,
   children,
-  className
+  className,
 }: {
   project: Project;
   children: React.ReactNode;
-  className?: string
+  className?: string;
 }) {
   return (
     <Dialog>
-      <DialogTrigger>
-        <div className={`cursor-pointer h-full ${className || ""}`} >{children}</div>
+      <DialogTrigger asChild>
+        <div className={`cursor-pointer h-full ${className || ""}`}>
+          {children}
+        </div>
       </DialogTrigger>
 
       <DialogContent className="min-w-[90vw] h-[92vh] overflow-y-auto p-0 bg-background border-border select-none">

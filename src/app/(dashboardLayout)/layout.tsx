@@ -23,7 +23,6 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const session = await refreshSession();
 
   // If the Refresh Token was deleted from PostgreSQL or expired, kick to login
