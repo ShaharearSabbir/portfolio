@@ -1,0 +1,11 @@
+model Session {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  adminEmail String   // Hardcoded to your dev email
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  userAgent String?  // Optional: To see if it's your EliteBook or your phone
+  ipAddress String?  // Optional: For extra security logs
+
+  @@map("sessions")
+}
