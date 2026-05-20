@@ -1,0 +1,14 @@
+model Experience {
+    id          String   @id @default(uuid())
+    company     String
+    role        String
+    location    String?
+    startDate   String
+    endDate     String?  // null if present
+    description String   @db.Text
+    technologies String[]
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@map("experiences")
+}

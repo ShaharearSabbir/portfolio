@@ -110,9 +110,10 @@ export function ProjectDetail({
               {/* Links Card */}
               <div className="flex flex-col gap-3">
                 {project.liveLink && (
-                  <Button className="w-full justify-between" size="lg">
-                    <a href={project.liveLink} target="_blank">
-                      Live Preview <ExternalLink className="w-4 h-4" />
+                  <Button asChild className="w-full justify-between group/link" size="lg">
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      <span>Live Preview</span>
+                      <ExternalLink className="w-4 h-4 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </a>
                   </Button>
                 )}

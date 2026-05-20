@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+
 import { Sun } from "lucide-react";
 
 import { Moon } from "lucide-react";
@@ -9,10 +11,23 @@ import { useTheme } from "next-themes";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  if (!mounted) {
+    return (
+      <div className="w-10 h-10 flex items-center justify-center p-2">
+        <VscColorMode size={24} className="text-muted-foreground opacity-50" />
+      </div>
+    );
+  }
 
   return (
     <button
@@ -30,6 +45,7 @@ export function ModeToggle() {
           />
         ) : (
           <Moon
+            suppressHydrationWarning
             size={24}
             className="transition-all duration-500 rotate-180 scale-100"
           />

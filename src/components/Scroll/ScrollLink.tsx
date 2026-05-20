@@ -1,10 +1,8 @@
-"use client"
+"use client";
 
 import { Link } from "react-scroll";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-
 
 const ScrollLink = ({ name, children, className, ...props }: any) => {
   return (
@@ -13,7 +11,6 @@ const ScrollLink = ({ name, children, className, ...props }: any) => {
       spy={true}
       smooth={true}
       duration={500}
-      offset={-100} 
       className={`cursor-pointer ${className ? className : ""}`}
       {...props}
     >
@@ -21,6 +18,5 @@ const ScrollLink = ({ name, children, className, ...props }: any) => {
     </Link>
   );
 };
-
 
 export default ScrollLink;

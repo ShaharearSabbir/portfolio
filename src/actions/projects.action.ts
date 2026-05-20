@@ -1,12 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { checkAuth } from "./auth.action";
 import { prisma } from "@/lib/prisma";
 import { projectSchema } from "@/validations/project.validation";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createProject(formData: FormData) {
+  try {
+    await checkAuth();
+  } catch (error) {
+    return { success: false, message: "Unauthorized access detected." };
+  }
+
   const parseArray = (key: string) => {
     return (
       formData
@@ -86,4 +93,18 @@ export async function createProject(formData: FormData) {
   }
 
   redirect("/dashboard/projects");
+}
+
+export async function deleteProject(id: string) {
+  try {
+    await checkAuth();
+    await prisma.project.delete({ where: { id } });
+    revalidatePath("/dashboard/projects");
+    revalidatePath("/projects");
+    revalidatePath("/");
+    return { success: true, message: "Project purged from the grid." };
+  } catch (error) {
+    console.error("Delete Error:", error);
+    return { success: false, message: "Failed to delete project." };
+  }
 }

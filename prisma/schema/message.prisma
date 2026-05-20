@@ -1,0 +1,11 @@
+model Message {
+    id        String   @id @default(uuid())
+    name      String
+    email     String
+    subject   String?
+    message   String   @db.Text
+    isRead    Boolean  @default(false)
+    createdAt DateTime @default(now())
+
+    @@map("messages")
+}

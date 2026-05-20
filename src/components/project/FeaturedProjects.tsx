@@ -68,21 +68,27 @@ export default async function FeaturedProjects() {
         </div>
 
         {/* Projects Grid */}
-        <m.div 
-          className="lg:ml-32 lg:mr-32 px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
-        >
-          {featuredProjects.map((project) => (
-            <m.div 
-              key={project.id} 
-              variants={itemVariants as any}
-              className="h-full"
-            >
-              <ProjectDetail project={project}>
-                <ProjectCard project={project} />
-              </ProjectDetail>
-            </m.div>
-          ))}
-        </m.div>
+        <div className="lg:ml-32 lg:mr-32 px-4">
+          {featuredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {featuredProjects.map((project) => (
+                <m.div 
+                  key={project.id} 
+                  variants={itemVariants as any}
+                  className="h-full"
+                >
+                  <ProjectDetail project={project}>
+                    <ProjectCard project={project} />
+                  </ProjectDetail>
+                </m.div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-20 text-center border border-dashed rounded-[40px] border-border/50 bg-card/20">
+              <p className="text-muted-foreground font-medium tracking-tight">Project architecture gallery is currently being curated. Check back soon for my latest builds.</p>
+            </div>
+          )}
+        </div>
       </m.div>
     </section>
   );

@@ -1,0 +1,5 @@
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}

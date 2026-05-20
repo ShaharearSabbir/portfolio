@@ -4,6 +4,8 @@ import Hero from "@/components/hero/Hero";
 import FeaturedProjects from "@/components/project/FeaturedProjects";
 import BackToTop from "@/components/Scroll/BackToTop";
 import TechnicalInsights from "@/components/TechnicalInsights/TechnicalInsights";
+import BlogSection from "@/components/blog/BlogSection";
+import ExperienceSection from "@/components/experience/ExperienceSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     "Software Engineer Bangladesh",
   ],
   alternates: {
-    canonical: "https://shaharear.top",
+    canonical: process.env.APP_URL || "https://shaharear.top",
   },
 };
 
@@ -25,8 +27,10 @@ export default function Home() {
     <div>
       <Hero />
       <About />
+      <ExperienceSection />
       <FeaturedProjects />
       <TechnicalInsights />
+      <BlogSection />
       <ContactSection />
       <BackToTop />
     </div>

@@ -131,3 +131,45 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Lexical Editor Core Canvas Layout overrides */
+.lexical-editor {
+  outline: none;
+}
+
+/* Lexical GitHub Dark Syntax Highlighting Theme */
+.lexical-code {
+  background-color: #0d1117;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-size: 1px;
+  border-color: #30363d;
+  border-radius: 0.75rem;
+  color: #c9d1d9;
+  overflow-x: auto;
+}
+.lexical-tokenKeyword {
+  color: #ff7b72;
+  font-weight: bold;
+}
+.lexical-tokenFunction {
+  color: #d2a6ff;
+}
+.lexical-tokenString {
+  color: #a5d6ff;
+}
+.lexical-tokenComment {
+  color: #8b949e;
+  font-style: italic;
+}
+.lexical-tokenVariable {
+  color: #ffa657;
+}
+.lexical-tokenOperator {
+  color: #ff7b72;
+}
+.lexical-tokenPunctuation {
+  color: #8b949e;
+}

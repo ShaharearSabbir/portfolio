@@ -16,6 +16,8 @@ import { ProjectCard } from "./ProjectCard";
 import { ProjectDetail } from "./ProjectDetail";
 
 export function ProjectArchive({ projects }: { projects: Project[] }) {
+  if (projects.length === 0) return null;
+
   return (
     <Dialog>
       <DialogTrigger asChild>

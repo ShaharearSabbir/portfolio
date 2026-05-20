@@ -6,6 +6,7 @@ import sendEmail from "@/utils/sendEmail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import crypto from "crypto";
 
 const SECRET = process.env.JWT_SECRET!;
 
@@ -18,7 +19,7 @@ export async function sendAdminOTP() {
       return { success: false };
     }
 
-    const otp = Math.floor(100000 + Math.random() * 900000);
+    const otp = crypto.randomInt(100000, 999999);
 
     await prisma.verification.deleteMany({});
 
@@ -38,7 +39,7 @@ export async function sendAdminOTP() {
       </div>
     `;
 
-    const result = await sendEmail(html, text);
+    const result = await sendEmail(html, text, "🔐 Dashboard Access Code");
 
     if (!result?.success) {
       return { success: false };
@@ -228,5 +229,27 @@ export async function terminateSession() {
     cookieStore.delete("refreshToken");
 
     redirect("/login");
+  }
+}
+
+export async function checkAuth() {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    throw new Error("Unauthorized: No access token");
+  }
+
+  try {
+    const decoded = jwt.verify(accessToken, SECRET) as {
+      email: string;
+      role: string;
+    };
+    if (decoded.role !== "admin") {
+      throw new Error("Unauthorized: Admin role required");
+    }
+    return decoded;
+  } catch (error) {
+    throw new Error("Unauthorized: Invalid session");
   }
 }

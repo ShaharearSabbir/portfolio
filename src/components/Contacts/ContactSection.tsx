@@ -96,7 +96,18 @@ export default function ContactSection() {
           variants={itemVariants as any}
           className="lg:ml-32 px-4 pt-12 border-t border-white/5 text-sm text-muted-foreground/50 flex flex-col md:flex-row justify-between gap-4 lg:mr-32"
         >
-          <p>© 2026 Shaharear Rahman Sabbir. Built with passion and love.</p>
+          <p>
+            © 2026{" "}
+            <a
+              href="https://www.linkedin.com/in/shaharearrahmansabbir/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Shaharear Rahman Sabbir
+            </a>
+            . Built with passion and love.
+          </p>
           <p className="font-mono uppercase tracking-widest">
             Brahmanbaria, BD — UTC+6
           </p>

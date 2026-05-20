@@ -7,24 +7,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ModeToggle } from "../ui/ModeToggle";
 import ScrollLink from "../Scroll/ScrollLink";
 
-const Navbar = () => {
+const Navbar = ({ experienceCount }: { experienceCount: number }) => {
   // Set the default active section
   const [activeSection, setActiveSection] = useState("about");
 
   const navLinks = [
     { href: "about", icon: <VscAccount size={24} />, label: "About" },
+    ...(experienceCount > 0
+      ? [
+          {
+            href: "experience",
+            icon: <VscRemoteExplorer size={24} />,
+            label: "Experience",
+          },
+        ]
+      : []),
     {
       href: "featured-projects",
       icon: <VscCode size={24} />,
       label: "Projects",
     },
-    { href: "insights", icon: <BiGitBranch size={24} />, label: "Insights" },
+    {
+      href: "blog",
+      icon: <BiGitBranch size={24} />,
+      label: "Blog",
+    },
     {
       href: "contact",
       icon: <VscRemoteExplorer size={24} />,
       label: "Contact",
     },
   ];
+  // gdfgdf
 
   return (
     <header className="fixed z-50 lg:left-6 lg:top-1/2 lg:-translate-y-1/2 bottom-6 left-1/2 -translate-x-1/2 lg:translate-x-0 max-w-100 lg:max-w-none">

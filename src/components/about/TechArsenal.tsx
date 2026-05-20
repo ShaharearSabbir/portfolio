@@ -4,6 +4,7 @@ import { Skill } from "@/generated/client/client";
 import { VscTerminal, VscRocket } from "react-icons/vsc";
 import Image from "next/image";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 
 const getIconUrl = (name: string, isDark: boolean) => {
@@ -65,9 +66,11 @@ function SkillBadge({
   color: "primary" | "orange";
 }) {
   const [error, setError] = useState(false);
-
+  const { theme } = useTheme();
+  const isDark = theme === "dark" || theme === "system"; // Simplified check
+  
   // 1. Try DB Icon 2. Try CDN 3. Hide if both fail
-  const iconSrc = skill.iconUrl || getIconUrl(skill.name, true);
+  const iconSrc = skill.iconUrl || getIconUrl(skill.name, isDark);
 
   return (
     <div

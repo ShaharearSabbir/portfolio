@@ -2,46 +2,49 @@ import { Badge } from "@/components/ui/badge";
 
 export function StoryNarrative({ projectCount }: { projectCount: number }) {
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
-      <div className="space-y-4">
-        <Badge className="bg-primary/10 text-primary border-none rounded-full px-4 py-1 hover:bg-primary/20">
-          Systems Engineering
-        </Badge>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight">
-          Building Systems <br className="hidden lg:block" />
-          with <span className="text-primary italic">Type-Safe</span> Precision.
+    <div className="space-y-12 animate-in fade-in slide-in-from-left duration-700">
+      <div className="space-y-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
+          The Philosophy
+        </div>
+        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-[0.9] text-foreground">
+          Engineering <span className="text-primary">Scalability</span> <br /> 
+          Beyond the Code.
         </h2>
       </div>
 
-      <div className="space-y-6 text-lg md:text-xl text-muted-foreground leading-relaxed font-medium">
-        <p>
+      <div className="space-y-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+        <p className="relative">
           I am a <span className="text-foreground font-bold">MERN Stack Developer</span> driven 
           by the challenge of architecting scalable, data-driven applications. My approach 
           centers on creating seamless bridges between high-performance backends and 
           responsive, intuitive frontends.
         </p>
+        
         <p>
-          While many focus on &quot;just making it work,&quot; I focus on **how it scales**. 
-          From implementing complex database relations in <span className="italic text-foreground">Bloom</span> 
-          to handling state management in <span className="italic text-foreground">Mamarshop</span>, 
+          While many focus on "just making it work," I focus on <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4">how it scales</span>. 
+          From implementing complex database relations in <span className="text-foreground font-semibold">Bloom</span>{" "}
+           to handling state management in <span className="text-foreground font-semibold">Mamarshop</span>, 
           I treat every project as an opportunity to master system integrity and performance.
-        </p>
-        <p className="text-base md:text-lg italic opacity-80 border-l-2 border-primary/20 pl-4">
-          I am currently looking to bring my focus on clean architecture and 
-          modern full-stack patterns to a forward-thinking engineering team.
         </p>
       </div>
 
-      <div className="pt-8 flex gap-12 border-t border-white/5">
-        <div>
-          <p className="text-4xl font-black text-primary tracking-tighter">
-            {projectCount < 10 ? `0${projectCount}` : projectCount}
-          </p>
-          <p className="text-xs uppercase tracking-widest opacity-50 mt-1">Full-Stack Repos</p>
+      <div className="grid grid-cols-2 gap-12 pt-10 border-t border-border/50">
+        <div className="space-y-1">
+          <div className="flex items-baseline gap-1">
+            <span className="text-5xl font-black text-foreground tracking-tighter">
+              {projectCount < 10 ? `0${projectCount}` : projectCount}
+            </span>
+            <span className="text-primary font-bold text-xl">+</span>
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50">Production Builds</p>
         </div>
-        <div>
-          <p className="text-4xl font-black text-primary tracking-tighter">100%</p>
-          <p className="text-xs uppercase tracking-widest opacity-50 mt-1">Dedicated Growth</p>
+        <div className="space-y-1">
+          <div className="flex items-baseline gap-1">
+            <span className="text-5xl font-black text-foreground tracking-tighter">100</span>
+            <span className="text-primary font-bold text-xl">%</span>
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50">Commitment to Growth</p>
         </div>
       </div>
     </div>

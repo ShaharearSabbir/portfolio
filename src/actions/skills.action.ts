@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { checkAuth } from "./auth.action";
 import { prisma } from "@/lib/prisma";
 import { ICreateSkill, skillSchema } from "@/validations/skills.validation";
 import { revalidatePath } from "next/cache";
@@ -11,6 +12,7 @@ import { z } from "zod";
 
 export async function createSkill(data: ICreateSkill) {
   try {
+    await checkAuth();
     // 2. Validate the incoming data
     const validatedData = skillSchema.safeParse(data);
 
@@ -52,3 +54,16 @@ export async function createSkill(data: ICreateSkill) {
     };
   }
 }
+
+export async function deleteSkill(id: string) {
+  try {
+    await checkAuth();
+    await prisma.skill.delete({ where: { id } });
+    revalidatePath("/dashboard/skills");
+    revalidatePath("/");
+    return { success: true, message: "Skill removed from the arsenal." };
+  } catch (error) {
+    console.error("Delete Error:", error);
+    return { success: false, message: "Failed to remove skill." };
+  }
+}

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-domain.com", // Replace with your actual domain
+    url: process.env.APP_URL || "https://shaharear.top",
     title: "Shaharear Rahman Sabbir | Full Stack Developer",
     description: "Architecting scalable web solutions with modern tech stacks.",
     siteName: "Shaharear Rahman Sabbir Portfolio",

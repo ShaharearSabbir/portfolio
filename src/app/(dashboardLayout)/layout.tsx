@@ -6,15 +6,18 @@ import {
   VscCode,
   VscSettingsGear,
   VscHome,
+  VscComment,
 } from "react-icons/vsc";
 import { refreshSession } from "@/actions/auth.action";
 import { LogoutButton } from "@/components/auth/LogoutButton";
+import { VscMail } from "react-icons/vsc";
 
 const navLinks = [
   { name: "Overview", href: "/dashboard", icon: VscHome },
   { name: "Projects", href: "/dashboard/projects", icon: VscProject },
   { name: "Tech Stack", href: "/dashboard/skills", icon: VscLayers },
-  { name: "Snippets", href: "/dashboard/snippets", icon: VscCode },
+  { name: "Blog", href: "/dashboard/blog", icon: VscCode },
+  { name: "Inbox", href: "/dashboard/inbox", icon: VscComment },
   { name: "Settings", href: "/dashboard/settings", icon: VscSettingsGear },
 ];
 
@@ -31,16 +34,16 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col md:flex-row">
+    <div className="h-screen bg-background flex flex-col md:flex-row overflow-hidden">
       {/* --- DESKTOP SIDEBAR --- */}
-      <aside className="hidden md:flex w-64 flex-col border-r border-border bg-card/50 backdrop-blur-xl sticky top-0 h-screen">
+      <aside className="hidden md:flex w-64 flex-col border-r border-border bg-card/50 backdrop-blur-xl h-screen sticky top-0">
         <div className="p-6 border-b border-border/50">
           <h2 className="text-sm font-bold tracking-widest uppercase opacity-50">
             Dashboard
           </h2>
         </div>
 
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -59,8 +62,8 @@ export default async function DashboardLayout({
       </aside>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <main className="flex-1 pb-24 md:pb-0">
-        <header className="h-16 border-b border-border/50 flex items-center justify-between px-6 bg-background/80 backdrop-blur-md sticky top-0 z-20">
+      <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header className="h-16 border-b border-border/50 flex items-center justify-between px-6 bg-background/80 backdrop-blur-md z-20 shrink-0">
           <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
             Shhaharear Rahman Sabbir
           </span>
@@ -69,7 +72,11 @@ export default async function DashboardLayout({
           </div>
         </header>
 
-        <section className="p-6 max-w-7xl mx-auto">{children}</section>
+        <section className="flex-1 overflow-y-auto p-6 scroll-smooth">
+          <div className="max-w-7xl mx-auto h-full flex flex-col">
+            {children}
+          </div>
+        </section>
       </main>
 
       {/* --- MOBILE BOTTOM NAV --- */}

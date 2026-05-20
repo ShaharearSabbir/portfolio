@@ -9,16 +9,20 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 
-  connectionTimeout: 5000, 
+  connectionTimeout: 5000,
 });
 
-const sendEmail = async (html: string, text: string) => {
+const sendEmail = async (
+  html: string,
+  text: string,
+  subject: string,
+  to?: string,
+) => {
   try {
     const info = await transporter.sendMail({
-
-      from: `"Bloom Admin" <${process.env.EMAIL_USER}>`, 
-      to: process.env.DEV_EMAIL,
-      subject: "🔐 Dashboard Access Code",
+      from: `"Portfolio System" <${process.env.EMAIL_USER}>`,
+      to: to ?? process.env.DEV_EMAIL,
+      subject: subject,
       text: text,
       html: html,
     });

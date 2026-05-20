@@ -31,7 +31,16 @@ const Hero = () => {
   return (
     <div className="min-h-screen overflow-hidden relative bg-background flex items-center">
       {/* 1. Subtle Background Decoration (Top Left) */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 blur-[120px] rounded-full -z-10 opacity-50" />
+      <m.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.6, 0.3],
+          x: [0, 20, 0],
+          y: [0, -20, 0]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 blur-[120px] rounded-full -z-10" 
+      />
 
       <m.div
         variants={containerVariants}
@@ -133,7 +142,14 @@ const Hero = () => {
         {/* Hero Image Section (Right) */}
         <div className="flex-1 lg:min-h-screen w-full flex justify-end items-end relative overflow-visible">
           {/* 1. Static Glow Base (Visible behind image) */}
-          <div className="absolute bottom-10 right-10 w-[80%] h-[80%] bg-primary/10 blur-[100px] animate-pulse rounded-full z-0" />
+          <m.div 
+            animate={{ 
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, 0],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-10 right-10 w-[80%] h-[80%] bg-primary/10 blur-[100px] rounded-full z-0" 
+          />
 
           {/* 2. Responsive Image Wrapper */}
           <m.div
@@ -153,6 +169,6 @@ const Hero = () => {
       </m.div>
     </div>
   );
-};
+}
 
 export default Hero;

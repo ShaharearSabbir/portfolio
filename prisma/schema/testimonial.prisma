@@ -1,0 +1,13 @@
+model Testimonial {
+    id          String   @id @default(uuid())
+    name        String
+    role        String?
+    company     String?
+    content     String   @db.Text
+    avatar      String?
+    relationship String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@map("testimonials")
+}
